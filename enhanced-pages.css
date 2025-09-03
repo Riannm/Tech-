@@ -293,12 +293,34 @@
   background: rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   border: 2px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  display: block;
+  position: relative;
+  overflow: hidden;
 }
 
 .service-item:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  border-color: #4dd5fb;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #4dd5fb, #3cc6ec);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover::before {
+  transform: scaleX(1);
 }
 
 .service-icon {
@@ -325,6 +347,37 @@
 
 .service-item p {
   color: white;
+  margin-bottom: 20px;
+}
+
+.service-price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.service-price .price {
+  color: #4dd5fb;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: rgba(77, 213, 251, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid rgba(77, 213, 251, 0.3);
+}
+
+.service-price .view-details {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover .view-details {
+  opacity: 1;
+  color: #4dd5fb;
 }
 
 #about-timeline {

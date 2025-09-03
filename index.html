@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech+ - Tecnologia ao seu alcance</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="produtos.css">
 </head>
 <body>
     
@@ -19,25 +20,50 @@
             <li><a href="about.html">Sobre</a></li>
             <li><a href="contact.html">Contato</a></li>
             <li><a href="form.html">Formulário</a></li>
-            <li><a id="bag" href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-              </svg></i></a></li>
-              <a href="#" id="close"><i class="far fa-times"></i></a>
+            <li id="cart-icon">
+                <a href="#" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </li>
+            <a href="#" id="close"><i class="far fa-times"></i></a>
         </ul>
     </div>
 
     <div id="mobile">
-    
-        
-        <a href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart cart_mobile" viewBox="0 0 16 16">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-          </svg></i></a>
-        
+        <a href="#" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart cart_mobile"></i>
+            <span id="cart-count-mobile">0</span>
+        </a>
         <i id="bar" class="fas fa-outdent"></i>
-
     </div>
 
   </section>
+
+  <!-- Carrinho de Compras -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h3>
+        <button onclick="toggleCart()" class="close-cart">&times;</button>
+    </div>
+    <div id="cart-items" class="cart-items">
+        <!-- Itens do carrinho serão inseridos aqui -->
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <strong>Total: R$ <span id="cart-total">0,00</span></strong>
+        </div>
+        <button id="checkout-btn" class="checkout-btn" onclick="checkout()">
+            <i class="fas fa-credit-card"></i> Finalizar Compra
+        </button>
+        <button class="clear-cart-btn" onclick="clearCart()">
+            <i class="fas fa-trash"></i> Limpar Carrinho
+        </button>
+    </div>
+  </div>
+
+  <!-- Overlay do carrinho -->
+  <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
 
   <section id="hero">
     <h4>Technologia ao seu alcance.</h4>
@@ -56,7 +82,7 @@
     <h1>Nossos Produtos</h1>
     <p>De pequenas peças a grandes monitores, temos as peças necessárias para te ajudar em seu trabalho.</p>
     <div class="product-container">
-        <div class="products">
+        <div class="products" onclick="openProductPage('controle-ps5')">
             <img src="img/products/controle.jpg" alt="">
             <div class="description">
                 <span>Sony Computers</span>
@@ -71,9 +97,11 @@
                 </div>
                 <h4>R$450,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
-        <div class="products">
+        <div class="products" onclick="openProductPage('headset-fortrek')">
             <img src="img/products/headset.jpg" alt="">
             <div class="description">
                 <span>Fortrek</span>
@@ -88,9 +116,11 @@
                 </div>
                 <h4>R$250,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
-        <div class="products">
+        <div class="products" onclick="openProductPage('monitor-samsung')">
             <img src="img/products/monitor.jpg" alt="">
             <div class="description">
                 <span>Samsung</span>
@@ -105,9 +135,11 @@
                 </div>
                 <h4>R$1.200,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
-        <div class="products">
+        <div class="products" onclick="openProductPage('mouse-redragon')">
             <img src="img/products/mouse.jpg" alt="">
             <div class="description">
                 <span>RedDragon</span>
@@ -122,9 +154,11 @@
                 </div>
                 <h4>R$180,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
-        <div class="products">
+        <div class="products" onclick="openProductPage('pen-drive-sandisk')">
             <img src="img/products/pen_drive.jpg" alt="">
             <div class="description">
                 <span>Sandisk</span>
@@ -139,9 +173,11 @@
                 </div>
                 <h4>R$120,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
-        <div class="products">
+        <div class="products" onclick="openProductPage('processador-ryzen')">
             <img src="img/products/processador.jpg" alt="">
             <div class="description">
                 <span>Ryzen</span>
@@ -156,9 +192,11 @@
                 </div>
                 <h4>R$1.100,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
-        <div class="products">
+        <div class="products" onclick="openProductPage('ssd-crucial')">
             <img src="img/products/ssd.jpg" alt="">
             <div class="description">
                 <span>Crucial</span>
@@ -173,9 +211,11 @@
                 </div>
                 <h4>R$350,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
-        <div class="products">
+        <div class="products" onclick="openProductPage('teclado-mancer')">
             <img src="img/products/teclado.jpg" alt="">
             <div class="description">
                 <span>Mancer Ghoul</span>
@@ -190,7 +230,9 @@
                 </div>
                 <h4>R$280,00</h4>
             </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            <div class="cart-icon-overlay">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
     </div>
   </section>
@@ -208,140 +250,156 @@
     <p>Soluções digitais completas para facilitar o seu dia a dia!</p>
     <div class="product-container">
         <div class="products">
-            <img src="img/provided_services/CRIAÇÃO_DE_SITES.jpg" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Criação de Sites Profissionais</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20de%20Sites%20Profissionais." target="_blank" class="service-link">
+                <img src="img/provided_services/CRIAÇÃO_DE_SITES.jpg" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Criação de Sites Profissionais</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$800,00</h4>
                 </div>
-                <h4>R$800,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20de%20Sites%20Profissionais." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
         <div class="products">
-            <img src="img/provided_services/CRIAÇÃO_GMB_MANUTENÇÃO.jpg" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Criação e Manutenção de Perfil no Google Meu Negócio</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20e%20Manutenção%20de%20Perfil%20no%20Google%20Meu%20Negócio." target="_blank" class="service-link">
+                <img src="img/provided_services/CRIAÇÃO_GMB_MANUTENÇÃO.jpg" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Criação e Manutenção de Perfil no Google Meu Negócio</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$300,00</h4>
                 </div>
-                <h4>R$300,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20e%20Manutenção%20de%20Perfil%20no%20Google%20Meu%20Negócio." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
         <div class="products">
-            <img src="img/provided_services/POST_FORMATAÇÃO.png" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Formatação de Computadores e Notebooks</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Formatação%20de%20Computadores%20e%20Notebooks." target="_blank" class="service-link">
+                <img src="img/provided_services/POST_FORMATAÇÃO.png" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Formatação de Computadores e Notebooks</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$150,00</h4>
                 </div>
-                <h4>R$150,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Formatação%20de%20Computadores%20e%20Notebooks." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
         <div class="products">
-            <img src="img/provided_services/OTIMIZAÇÃO_DE_DESEMPENHO.png" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Otimização de Desempenho de Computadores</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Otimização%20de%20Desempenho%20de%20Computadores." target="_blank" class="service-link">
+                <img src="img/provided_services/OTIMIZAÇÃO_DE_DESEMPENHO.png" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Otimização de Desempenho de Computadores</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$100,00</h4>
                 </div>
-                <h4>R$100,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Otimização%20de%20Desempenho%20de%20Computadores." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
         <div class="products">
-            <img src="img/provided_services/PACOTE_OFFICE.jpg" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Instalação do Pacote Office</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Instalação%20do%20Pacote%20Office." target="_blank" class="service-link">
+                <img src="img/provided_services/PACOTE_OFFICE.jpg" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Instalação do Pacote Office</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$200,00</h4>
                 </div>
-                <h4>R$200,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Instalação%20do%20Pacote%20Office." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
         <div class="products">
-            <img src="img/provided_services/POST_FILME_IG.png" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Criação de Posts para Instagram</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20de%20Posts%20para%20Instagram." target="_blank" class="service-link">
+                <img src="img/provided_services/POST_FILME_IG.png" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Criação de Posts para Instagram</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$50,00</h4>
                 </div>
-                <h4>R$50,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20de%20Posts%20para%20Instagram." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
         <div class="products">
-            <img src="img/provided_services/CRIAÇÃO_DE_POSTS.png" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Criação de Posts para Redes Sociais</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20de%20Posts%20para%20Redes%20Sociais." target="_blank" class="service-link">
+                <img src="img/provided_services/CRIAÇÃO_DE_POSTS.png" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Criação de Posts para Redes Sociais</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$60,00</h4>
                 </div>
-                <h4>R$60,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Criação%20de%20Posts%20para%20Redes%20Sociais." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
         <div class="products">
-            <img src="img/provided_services/LOGO_COMPRA_ONLINE.png" alt="">
-            <div class="description">
-                <span>Tech+</span>
-                <h5>Suporte Técnico Online</h5>
-                <div class="star_rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Suporte%20Técnico%20Online." target="_blank" class="service-link">
+                <img src="img/provided_services/LOGO_COMPRA_ONLINE.png" alt="">
+                <div class="description">
+                    <span>Tech+</span>
+                    <h5>Suporte Técnico Online</h5>
+                    <div class="star_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <h4>R$80,00</h4>
                 </div>
-                <h4>R$80,00</h4>
-            </div>
-            <a href="#"><i class="fal fa-cart-plus cart"></i></a>
+            </a>
+            <a href="https://wa.me/553397099695?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Suporte%20Técnico%20Online." target="_blank"><i class="fal fa-cart-plus cart"></i></a>
         </div>
     </div>
   </section>
@@ -394,6 +452,33 @@
   </footer>
   
   
+    <script>
+        // Função para abrir páginas de produto
+        function openProductPage(productId) {
+            // Mapeia os IDs dos produtos para as páginas correspondentes
+            const productPages = {
+                // Produtos físicos
+                'controle-ps5': 'produto-controle-ps5.html',
+                'headset-fortrek': 'produto-headset-fortrek.html',
+                'monitor-samsung': 'produto-monitor-samsung.html',
+                'mouse-redragon': 'produto-mouse-redragon.html',
+                'pen-drive-sandisk': 'produto-pen-drive-sandisk.html',
+                'processador-ryzen': 'produto-processador-ryzen.html',
+                'ssd-crucial': 'produto-ssd-crucial.html',
+                'teclado-mancer': 'produto-teclado-mancer.html'
+            };
+            
+            const pageUrl = productPages[productId];
+            if (pageUrl) {
+                window.location.href = pageUrl;
+            } else {
+                // Se não encontrar a página, redireciona para a página de teste
+                window.location.href = 'teste-produto.html';
+            }
+        }
+    </script>
+    
     <script src="index.js"></script>
+    <script src="carrinho.js"></script>
 </body>
 </html>

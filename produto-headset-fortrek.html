@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headset Fortrek Blackfire - Tech+</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="enhanced-pages.css">
+    <link rel="stylesheet" href="produtos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html"><img src="img/logo/logo.png" class="logo" alt="Tech+ Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="shop.html">Serviços</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="contact.html">Contato</a></li>
+                <li id="cart-icon">
+                    <a href="#" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Carrinho de Compras -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h3>
+            <button onclick="toggleCart()" class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Itens do carrinho serão inseridos aqui -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cart-total">0,00</span></strong>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Finalizar Compra
+            </button>
+            <button class="clear-cart-btn" onclick="clearCart()">
+                <i class="fas fa-trash"></i> Limpar Carrinho
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay do carrinho -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Página do Produto -->
+    <section id="product-hero" class="section-p1">
+        <div class="product-container">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="img/products/headset.jpg" alt="Headset Fortrek Blackfire" id="main-product-image">
+                </div>
+                <div class="thumbnail-images">
+                    <img src="img/products/headset.jpg" alt="Headset Fortrek Blackfire" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/80x80/4dd5fb/ffffff?text=RGB" alt="RGB" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/80x80/4dd5fb/ffffff?text=Microfone" alt="Microfone" onclick="changeImage(this.src)">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-breadcrumb">
+                    <a href="index.html">Início</a> > 
+                    <a href="index.html">Produtos</a> > 
+                    <span>Headset Fortrek Blackfire</span>
+                </div>
+                
+                <h1>Headset Gamer Fortrek Blackfire RGB</h1>
+                <div class="product-rating">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">5.0 (18 avaliações)</span>
+                </div>
+                
+                <div class="product-price">
+                    <span class="current-price">R$ 250,00</span>
+                    <span class="original-price">R$ 320,00</span>
+                    <span class="discount-badge">-22%</span>
+                </div>
+                
+                <div class="product-description">
+                    <p>Headset gaming com som surround 7.1, microfone removível com cancelamento de ruído e iluminação RGB personalizável. Ideal para jogos e comunicação.</p>
+                </div>
+                
+                <div class="product-features">
+                    <h3>Características principais:</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Som surround 7.1 virtual</li>
+                        <li><i class="fas fa-check"></i> Microfone removível</li>
+                        <li><i class="fas fa-check"></i> RGB personalizável</li>
+                        <li><i class="fas fa-check"></i> Drivers de 50mm</li>
+                        <li><i class="fas fa-check"></i> Compatível com PC/PS4/PS5</li>
+                        <li><i class="fas fa-check"></i> Controles inline</li>
+                    </ul>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="add-to-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Adicionar ao Carrinho
+                    </button>
+                    <button class="buy-now-btn" onclick="buyNow()">
+                        <i class="fas fa-credit-card"></i>
+                        Comprar Agora
+                    </button>
+                </div>
+                
+                <div class="product-guarantee">
+                    <div class="guarantee-item">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Entrega em até 3 dias úteis</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Garantia de 1 ano</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <i class="fas fa-undo"></i>
+                        <span>Devolução em até 7 dias</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Função para trocar imagem principal
+        function changeImage(src) {
+            document.getElementById('main-product-image').src = src;
+        }
+        
+        // Função para comprar agora
+        function buyNow() {
+            addToCart();
+        }
+    </script>
+    
+    <script src="produtos.js"></script>
+    <script src="carrinho.js"></script>
+</body>
+</html>

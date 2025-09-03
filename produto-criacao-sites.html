@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de Sites - Tech+</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="enhanced-pages.css">
+    <link rel="stylesheet" href="produtos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html"><img src="img/logo/logo.png" class="logo" alt="Tech+ Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="shop.html">Serviços</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="contact.html">Contato</a></li>
+                <li id="cart-icon">
+                    <a href="#" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Carrinho de Compras -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h3>
+            <button onclick="toggleCart()" class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Itens do carrinho serão inseridos aqui -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cart-total">0,00</span></strong>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Finalizar Compra
+            </button>
+            <button class="clear-cart-btn" onclick="clearCart()">
+                <i class="fas fa-trash"></i> Limpar Carrinho
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay do carrinho -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Página do Produto -->
+    <section id="product-hero" class="section-p1">
+        <div class="product-container">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="img/services/website-creation.jpg" alt="Criação de Sites" id="main-product-image">
+                </div>
+                <div class="thumbnail-images">
+                    <img src="img/services/website-creation.jpg" alt="Site Responsivo" onclick="changeImage(this.src)">
+                    <img src="img/services/website-mobile.jpg" alt="Site Mobile" onclick="changeImage(this.src)">
+                    <img src="img/services/website-design.jpg" alt="Design Moderno" onclick="changeImage(this.src)">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-breadcrumb">
+                    <a href="index.html">Início</a> > 
+                    <a href="about.html">Sobre</a> > 
+                    <span>Criação de Sites</span>
+                </div>
+                
+                <h1>Criação de Sites Profissionais</h1>
+                <div class="product-rating">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">5.0 (12 avaliações)</span>
+                </div>
+                
+                <div class="product-price">
+                    <span class="current-price">R$ 299,00</span>
+                    <span class="original-price">R$ 399,00</span>
+                    <span class="discount-badge">-25%</span>
+                </div>
+                
+                <div class="product-description">
+                    <p>Sites responsivos e modernos para sua empresa ou projeto pessoal. Desenvolvemos soluções web personalizadas que se adaptam a todos os dispositivos e impulsionam sua presença digital.</p>
+                </div>
+                
+                <div class="product-features">
+                    <h3>O que está incluído:</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Design responsivo (mobile-first)</li>
+                        <li><i class="fas fa-check"></i> Até 5 páginas incluídas</li>
+                        <li><i class="fas fa-check"></i> Formulário de contato</li>
+                        <li><i class="fas fa-check"></i> Integração com redes sociais</li>
+                        <li><i class="fas fa-check"></i> SEO básico otimizado</li>
+                        <li><i class="fas fa-check"></i> Hospedagem por 1 ano</li>
+                        <li><i class="fas fa-check"></i> Suporte técnico por 30 dias</li>
+                    </ul>
+                </div>
+                
+                <div class="product-options">
+                    <div class="option-group">
+                        <label>Quantidade de páginas:</label>
+                        <select id="page-count">
+                            <option value="5">5 páginas (R$ 299)</option>
+                            <option value="10">10 páginas (R$ 449)</option>
+                            <option value="15">15 páginas (R$ 599)</option>
+                            <option value="unlimited">Páginas ilimitadas (R$ 799)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label>Prazo de entrega:</label>
+                        <select id="delivery-time">
+                            <option value="7">7 dias úteis (R$ 50)</option>
+                            <option value="14">14 dias úteis (Gratuito)</option>
+                            <option value="21">21 dias úteis (Gratuito)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="add-to-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Adicionar ao Carrinho
+                    </button>
+                    <button class="buy-now-btn" onclick="buyNow()">
+                        <i class="fas fa-credit-card"></i>
+                        Comprar Agora
+                    </button>
+                </div>
+                
+                <div class="product-guarantee">
+                    <div class="guarantee-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Garantia de 30 dias</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Entrega digital</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <i class="fas fa-headset"></i>
+                        <span>Suporte 24/7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalhes do Produto -->
+    <section id="product-details" class="section-p1">
+        <div class="details-container">
+            <div class="details-tabs">
+                <button class="tab-btn active" onclick="showTab('description')">Descrição</button>
+                <button class="tab-btn" onclick="showTab('specifications')">Especificações</button>
+                <button class="tab-btn" onclick="showTab('reviews')">Avaliações</button>
+                <button class="tab-btn" onclick="showTab('faq')">FAQ</button>
+            </div>
+            
+            <div class="tab-content">
+                <div id="description" class="tab-pane active">
+                    <h3>Descrição Completa</h3>
+                    <p>Nossos sites são desenvolvidos com as mais modernas tecnologias web, garantindo velocidade, segurança e uma experiência de usuário excepcional. Cada projeto é único e personalizado de acordo com suas necessidades específicas.</p>
+                    
+                    <h4>Tecnologias Utilizadas:</h4>
+                    <ul>
+                        <li>HTML5, CSS3 e JavaScript moderno</li>
+                        <li>Design responsivo com Bootstrap ou CSS Grid</li>
+                        <li>Otimização para motores de busca (SEO)</li>
+                        <li>Integração com Google Analytics</li>
+                        <li>Certificado SSL para segurança</li>
+                    </ul>
+                    
+                    <h4>Processo de Desenvolvimento:</h4>
+                    <ol>
+                        <li><strong>Briefing:</strong> Entendemos suas necessidades e objetivos</li>
+                        <li><strong>Wireframe:</strong> Criamos a estrutura visual do site</li>
+                        <li><strong>Design:</strong> Desenvolvemos o layout personalizado</li>
+                        <li><strong>Programação:</strong> Codificamos todas as funcionalidades</li>
+                        <li><strong>Testes:</strong> Verificamos em diferentes dispositivos</li>
+                        <li><strong>Entrega:</strong> Publicamos e configuramos tudo</li>
+                    </ol>
+                </div>
+                
+                <div id="specifications" class="tab-pane">
+                    <h3>Especificações Técnicas</h3>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <strong>Hosting:</strong>
+                            <span>Incluso por 1 ano</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Domínio:</strong>
+                            <span>Configuração incluída</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>SSL:</strong>
+                            <span>Certificado gratuito</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Backup:</strong>
+                            <span>Automático diário</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Suporte:</strong>
+                            <span>30 dias incluído</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Atualizações:</strong>
+                            <span>3 meses incluído</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="reviews" class="tab-pane">
+                    <h3>Avaliações dos Clientes</h3>
+                    <div class="reviews-summary">
+                        <div class="overall-rating">
+                            <div class="rating-number">5.0</div>
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="total-reviews">12 avaliações</div>
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <strong>João Silva</strong>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">15/03/2024</span>
+                        </div>
+                        <p>"Excelente trabalho! O site ficou exatamente como eu queria, responsivo e profissional. Recomendo muito!"</p>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <strong>Maria Santos</strong>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">10/03/2024</span>
+                        </div>
+                        <p>"Atendimento excepcional e resultado final incrível. Meu negócio cresceu muito desde que o site foi lançado."</p>
+                    </div>
+                </div>
+                
+                <div id="faq" class="tab-pane">
+                    <h3>Perguntas Frequentes</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Quanto tempo leva para desenvolver o site?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>O tempo varia de acordo com a complexidade do projeto. Sites básicos levam de 7-14 dias, enquanto projetos mais complexos podem levar de 21-30 dias.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Posso fazer alterações depois que o site estiver pronto?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim! Incluímos 3 meses de suporte para alterações gratuitas. Após esse período, oferecemos planos de manutenção mensais.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>O site funciona em celulares?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutamente! Todos os nossos sites são desenvolvidos com design responsivo, funcionando perfeitamente em todos os dispositivos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Relacionados -->
+    <section id="related-products" class="section-p1">
+        <h2>Produtos Relacionados</h2>
+        <div class="related-grid">
+            <a href="produto-otimizacao.html" class="related-item">
+                <img src="img/services/optimization.jpg" alt="Otimização">
+                <h4>Otimização de Desempenho</h4>
+                <span class="price">R$ 199</span>
+            </a>
+            <a href="produto-manutencao.html" class="related-item">
+                <img src="img/services/maintenance.jpg" alt="Manutenção">
+                <h4>Manutenção de Computadores</h4>
+                <span class="price">R$ 89</span>
+            </a>
+            <a href="produto-office.html" class="related-item">
+                <img src="img/services/office.jpg" alt="Office">
+                <h4>Pacote Office</h4>
+                <span class="price">R$ 49</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <img class="logo" src="img/logo/logo.png">
+                <p class="footer-description">
+                    Soluções digitais, serviços personalizados e suporte tecnológico para o seu dia a dia. Conecte-se com o futuro através da Tech+.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="shop.html">Serviços</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Serviços</h3>
+                <ul class="footer-links">
+                    <li><a href="produto-criacao-sites.html">Criação de Sites</a></li>
+                    <li><a href="produto-otimizacao.html">Otimização</a></li>
+                    <li><a href="produto-manutencao.html">Manutenção</a></li>
+                    <li><a href="produto-office.html">Pacote Office</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone"></i> (33) 97099-695</p>
+                    <p><i class="fas fa-envelope"></i> contato@techplus.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Açucena, MG</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://wa.me/553397099695"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Tech+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="produtos.js"></script>
+    <script src="carrinho.js"></script>
+</body>
+</html>

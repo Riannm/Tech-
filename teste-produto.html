@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Produto - Tech+</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="produtos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html"><img src="img/logo/logo.png" class="logo" alt="Tech+ Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="shop.html">Serviços</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="contact.html">Contato</a></li>
+                <li id="cart-icon">
+                    <a href="#" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Carrinho de Compras -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h3>
+            <button onclick="toggleCart()" class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Itens do carrinho serão inseridos aqui -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cart-total">0,00</span></strong>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Finalizar Compra
+            </button>
+            <button class="clear-cart-btn" onclick="clearCart()">
+                <i class="fas fa-trash"></i> Limpar Carrinho
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay do carrinho -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Página do Produto -->
+    <section id="product-hero" class="section-p1">
+        <div class="product-container">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="https://via.placeholder.com/500x400/4dd5fb/ffffff?text=Produto+Teste" alt="Produto Teste" id="main-product-image">
+                </div>
+                <div class="thumbnail-images">
+                    <img src="https://via.placeholder.com/80x80/4dd5fb/ffffff?text=1" alt="Imagem 1" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/80x80/4dd5fb/ffffff?text=2" alt="Imagem 2" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/80x80/4dd5fb/ffffff?text=3" alt="Imagem 3" onclick="changeImage(this.src)">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-breadcrumb">
+                    <a href="index.html">Início</a> > 
+                    <a href="about.html">Sobre</a> > 
+                    <span>Produto Teste</span>
+                </div>
+                
+                <h1>Produto de Teste</h1>
+                <div class="product-rating">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">5.0 (5 avaliações)</span>
+                </div>
+                
+                <div class="product-price">
+                    <span class="current-price">R$ 99,00</span>
+                    <span class="original-price">R$ 149,00</span>
+                    <span class="discount-badge">-33%</span>
+                </div>
+                
+                <div class="product-description">
+                    <p>Este é um produto de teste para verificar se o sistema de carrinho está funcionando corretamente.</p>
+                </div>
+                
+                <div class="product-features">
+                    <h3>O que está incluído:</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Funcionalidade de teste</li>
+                        <li><i class="fas fa-check"></i> Sistema de carrinho</li>
+                        <li><i class="fas fa-check"></i> Preços dinâmicos</li>
+                    </ul>
+                </div>
+                
+                <div class="product-options">
+                    <div class="option-group">
+                        <label>Opção de teste:</label>
+                        <select id="test-option" onchange="updateTestPrice()">
+                            <option value="basic">Básico (R$ 99)</option>
+                            <option value="premium">Premium (R$ 149)</option>
+                            <option value="ultimate">Ultimate (R$ 199)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="add-to-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Adicionar ao Carrinho
+                    </button>
+                    <button class="buy-now-btn" onclick="buyNow()">
+                        <i class="fas fa-credit-card"></i>
+                        Comprar Agora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Função para atualizar o preço baseado na opção selecionada
+        function updateTestPrice() {
+            const testOption = document.getElementById('test-option');
+            const currentPrice = document.querySelector('.current-price');
+            const originalPrice = document.querySelector('.original-price');
+            const discountBadge = document.querySelector('.discount-badge');
+            
+            let newPrice = 99;
+            let newOriginalPrice = 149;
+            
+            switch(testOption.value) {
+                case 'basic':
+                    newPrice = 99;
+                    newOriginalPrice = 149;
+                    break;
+                case 'premium':
+                    newPrice = 149;
+                    newOriginalPrice = 199;
+                    break;
+                case 'ultimate':
+                    newPrice = 199;
+                    newOriginalPrice = 299;
+                    break;
+            }
+            
+            currentPrice.textContent = `R$ ${newPrice.toFixed(2).replace('.', ',')}`;
+            originalPrice.textContent = `R$ ${newOriginalPrice.toFixed(2).replace('.', ',')}`;
+            
+            // Calcula o desconto
+            const discount = Math.round(((newOriginalPrice - newPrice) / newOriginalPrice) * 100);
+            discountBadge.textContent = `-${discount}%`;
+        }
+        
+        // Função para comprar agora
+        function buyNow() {
+            addToCart();
+            // Aqui você pode adicionar lógica adicional para compra direta
+        }
+        
+        // Inicializa o preço
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTestPrice();
+        });
+    </script>
+    
+    <script src="produtos.js"></script>
+    <script src="carrinho.js"></script>
+</body>
+</html>

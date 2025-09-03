@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processador AMD Ryzen 5 7600X - Tech+</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="enhanced-pages.css">
+    <link rel="stylesheet" href="produtos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html"><img src="img/logo/logo.png" class="logo" alt="Tech+ Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="shop.html">Serviços</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="contact.html">Contato</a></li>
+                <li id="cart-icon">
+                    <a href="#" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Carrinho de Compras -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h3>
+            <button onclick="toggleCart()" class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Itens do carrinho serão inseridos aqui -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cart-total">0,00</span></strong>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Finalizar Compra
+            </button>
+            <button class="clear-cart-btn" onclick="clearCart()">
+                <i class="fas fa-trash"></i> Limpar Carrinho
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay do carrinho -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Página do Produto -->
+    <section id="product-hero" class="section-p1">
+        <div class="product-container">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="img/products/processador.jpg" alt="Processador AMD Ryzen 5 7600X" id="main-product-image">
+                </div>
+                <div class="thumbnail-images">
+                    <img src="img/products/processador.jpg" alt="Processador AMD Ryzen 5 7600X" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/80x80/4dd5fb/ffffff?text=Especificações" alt="Especificações" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/80x80/4dd5fb/ffffff?text=Performance" alt="Performance" onclick="changeImage(this.src)">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-breadcrumb">
+                    <a href="index.html">Início</a> > 
+                    <a href="index.html">Produtos</a> > 
+                    <span>Processador AMD Ryzen 5 7600X</span>
+                </div>
+                
+                <h1>Processador AMD Ryzen 5 7600X</h1>
+                <div class="product-rating">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">5.0 (15 avaliações)</span>
+                </div>
+                
+                <div class="product-price">
+                    <span class="current-price">R$ 1.100,00</span>
+                    <span class="original-price">R$ 1.299,00</span>
+                    <span class="discount-badge">-15%</span>
+                </div>
+                
+                <div class="product-description">
+                    <p>Processador AMD Ryzen 5 7600X de alta performance com 6 cores e 12 threads. Ideal para jogos e trabalho profissional com arquitetura Zen 4 e socket AM5.</p>
+                </div>
+                
+                <div class="product-features">
+                    <h3>Especificações principais:</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 6 cores / 12 threads</li>
+                        <li><i class="fas fa-check"></i> Clock base: 4.7GHz</li>
+                        <li><i class="fas fa-check"></i> Clock turbo: até 5.3GHz</li>
+                        <li><i class="fas fa-check"></i> Cache L3: 38MB</li>
+                        <li><i class="fas fa-check"></i> Socket AM5</li>
+                        <li><i class="fas fa-check"></i> TDP: 105W</li>
+                    </ul>
+                </div>
+                
+                <div class="product-options">
+                    <div class="option-group">
+                        <label>Garantia estendida:</label>
+                        <select id="warranty-option">
+                            <option value="standard">Garantia padrão (1 ano)</option>
+                            <option value="extended">Garantia estendida (3 anos) +R$ 50</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="add-to-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Adicionar ao Carrinho
+                    </button>
+                    <button class="buy-now-btn" onclick="buyNow()">
+                        <i class="fas fa-credit-card"></i>
+                        Comprar Agora
+                    </button>
+                </div>
+                
+                <div class="product-guarantee">
+                    <div class="guarantee-item">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Entrega em até 3 dias úteis</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Garantia de 1 ano</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <i class="fas fa-undo"></i>
+                        <span>Devolução em até 7 dias</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalhes do Produto -->
+    <section id="product-details" class="section-p1">
+        <div class="product-tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab('description')">Descrição</button>
+                <button class="tab-btn" onclick="showTab('specifications')">Especificações</button>
+                <button class="tab-btn" onclick="showTab('reviews')">Avaliações</button>
+                <button class="tab-btn" onclick="showTab('faq')">FAQ</button>
+            </div>
+            
+            <div class="tab-content">
+                <div id="description" class="tab-pane active">
+                    <h3>Processador AMD Ryzen 5 7600X</h3>
+                    <p>O AMD Ryzen 5 7600X representa a nova geração de processadores da AMD, construído com a arquitetura Zen 4 de 5nm. Este processador oferece excelente performance para jogos e aplicações profissionais, com 6 cores e 12 threads que podem chegar até 5.3GHz em modo turbo.</p>
+                    
+                    <h4>Ideal para:</h4>
+                    <ul>
+                        <li>Gaming de alta performance</li>
+                        <li>Edição de vídeo e imagem</li>
+                        <li>Desenvolvimento de software</li>
+                        <li>Streaming e multitarefas</li>
+                    </ul>
+                    
+                    <p>Compatível com as mais recentes tecnologias como PCIe 5.0, DDR5 e socket AM5, garantindo futuro para upgrades.</p>
+                </div>
+                
+                <div id="specifications" class="tab-pane">
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <strong>Arquitetura:</strong>
+                            <span>Zen 4</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Processo:</strong>
+                            <span>5nm</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Cores:</strong>
+                            <span>6</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Threads:</strong>
+                            <span>12</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Clock Base:</strong>
+                            <span>4.7GHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Clock Turbo:</strong>
+                            <span>5.3GHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Cache L2:</strong>
+                            <span>6MB</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Cache L3:</strong>
+                            <span>38MB</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Socket:</strong>
+                            <span>AM5</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>TDP:</strong>
+                            <span>105W</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>PCIe:</strong>
+                            <span>PCIe 5.0</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Memória:</strong>
+                            <span>DDR5</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="reviews" class="tab-pane">
+                    <div class="reviews-summary">
+                        <div class="overall-rating">
+                            <h3>4.8</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>Baseado em 15 avaliações</p>
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <strong>João Silva</strong>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">15/01/2025</span>
+                        </div>
+                        <p>"Excelente processador! Performance incrível para jogos e trabalho. Temperatura controlada e overclock estável."</p>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <strong>Maria Santos</strong>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">10/01/2025</span>
+                        </div>
+                        <p>"Perfeito para edição de vídeo. Renderização muito rápida e multitarefas sem travamentos."</p>
+                    </div>
+                </div>
+                
+                <div id="faq" class="tab-pane">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Preciso de uma placa-mãe específica?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim, este processador usa o socket AM5, então você precisará de uma placa-mãe compatível com AM5 e DDR5.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Vem com cooler?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Não, este modelo não inclui cooler. Recomendamos um cooler de qualidade para melhor performance e temperatura.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>É compatível com Windows 11?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim, é totalmente compatível com Windows 11 e oferece suporte a todas as funcionalidades de segurança.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Relacionados -->
+    <section id="related-products" class="section-p1">
+        <h2>Produtos Relacionados</h2>
+        <div class="related-grid">
+            <div class="related-item" onclick="openProductPage('ssd-crucial')">
+                <img src="img/products/ssd.jpg" alt="SSD Crucial">
+                <h4>SSD Crucial E100 1TB</h4>
+                <p>R$ 350,00</p>
+            </div>
+            <div class="related-item" onclick="openProductPage('teclado-mancer')">
+                <img src="img/products/teclado.jpg" alt="Teclado Mancer">
+                <h4>Teclado Mancer Ghoul MK3</h4>
+                <p>R$ 280,00</p>
+            </div>
+            <div class="related-item" onclick="openProductPage('mouse-redragon')">
+                <img src="img/products/mouse.jpg" alt="Mouse Redragon">
+                <h4>Mouse Redragon King Pro</h4>
+                <p>R$ 180,00</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Função para trocar imagem principal
+        function changeImage(src) {
+            document.getElementById('main-product-image').src = src;
+        }
+        
+        // Função para mostrar abas
+        function showTab(tabName) {
+            // Esconde todas as abas
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            // Remove classe ativa de todos os botões
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Mostra a aba selecionada
+            document.getElementById(tabName).classList.add('active');
+            
+            // Adiciona classe ativa ao botão clicado
+            event.target.classList.add('active');
+        }
+        
+        // Função para toggle do FAQ
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        // Função para comprar agora
+        function buyNow() {
+            addToCart();
+            // Aqui você pode adicionar lógica adicional para compra direta
+        }
+        
+        // Função para abrir páginas de produto
+        function openProductPage(productId) {
+            const productPages = {
+                'ssd-crucial': 'produto-ssd-crucial.html',
+                'teclado-mancer': 'produto-teclado-mancer.html',
+                'mouse-redragon': 'produto-mouse-redragon.html'
+            };
+            
+            const pageUrl = productPages[productId];
+            if (pageUrl) {
+                window.location.href = pageUrl;
+            }
+        }
+    </script>
+    
+    <script src="produtos.js"></script>
+    <script src="carrinho.js"></script>
+</body>
+</html>
