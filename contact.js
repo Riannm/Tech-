@@ -1,7 +1,7 @@
 // Contact.js - Funcionalidades da página de contato
 document.addEventListener('DOMContentLoaded', function() {
     
-    // FAQ Expansível
+    // FAQ Expansível - Melhorado para remover espaços desnecessários
     const faqItems = document.querySelectorAll('.faq-item');
     
     faqItems.forEach(item => {
@@ -9,32 +9,46 @@ document.addEventListener('DOMContentLoaded', function() {
         const answer = item.querySelector('.faq-answer');
         const icon = question.querySelector('i');
         
+        // Inicializa o FAQ fechado
+        answer.style.maxHeight = '0';
+        answer.style.opacity = '0';
+        answer.style.padding = '0 30px';
+        
         question.addEventListener('click', () => {
             const isOpen = item.classList.contains('active');
             
             // Fecha todos os outros itens
             faqItems.forEach(otherItem => {
-                otherItem.classList.remove('active');
-                const otherIcon = otherItem.querySelector('.faq-question i');
-                otherIcon.style.transform = 'rotate(0deg)';
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherIcon = otherItem.querySelector('.faq-question i');
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                    if (otherAnswer) {
+                        otherAnswer.style.maxHeight = '0';
+                        otherAnswer.style.opacity = '0';
+                        otherAnswer.style.padding = '0 30px';
+                    }
+                }
             });
             
             // Abre/fecha o item clicado
             if (!isOpen) {
                 item.classList.add('active');
-                icon.style.transform = 'rotate(180deg)';
+                if (icon) icon.style.transform = 'rotate(180deg)';
+                if (answer) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.style.opacity = '1';
+                    answer.style.padding = '0 30px 25px';
+                }
             } else {
                 item.classList.remove('active');
-                icon.style.transform = 'rotate(0deg)';
-            }
-            
-            // Animação suave
-            if (answer.style.maxHeight) {
-                answer.style.maxHeight = null;
-                answer.style.opacity = '0';
-            } else {
-                answer.style.maxHeight = answer.scrollHeight + "px";
-                answer.style.opacity = '1';
+                if (icon) icon.style.transform = 'rotate(0deg)';
+                if (answer) {
+                    answer.style.maxHeight = '0';
+                    answer.style.opacity = '0';
+                    answer.style.padding = '0 30px';
+                }
             }
         });
     });
@@ -86,11 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 faqItems.forEach(item => {
                     item.classList.remove('active');
                     const icon = item.querySelector('.faq-question i');
-                    if (icon) icon.style.transform = 'rotate(0deg)';
                     const answer = item.querySelector('.faq-answer');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
                     if (answer) {
-                        answer.style.maxHeight = null;
+                        answer.style.maxHeight = '0';
                         answer.style.opacity = '0';
+                        answer.style.padding = '0 30px';
                     }
                 });
             }, 2000);
@@ -332,13 +347,15 @@ document.addEventListener('DOMContentLoaded', function() {
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
             opacity: 0;
+            padding: 0 30px;
         }
         
         .faq-item.active .faq-answer {
-            max-height: 500px;
+            max-height: 200px;
             opacity: 1;
+            padding: 0 30px 25px;
         }
         
         .faq-question i {

@@ -7,12 +7,22 @@
   border-radius: 20px;
   margin: 20px 80px;
   border: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 60px 80px;
 }
 
 .hero-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  text-align: left;
+  flex: 1;
 }
 
 .hero-text h1 {
@@ -33,6 +43,7 @@
   display: flex;
   gap: 30px;
   margin-top: 30px;
+  justify-content: flex-start;
 }
 
 .stat-item {
@@ -54,6 +65,11 @@
   letter-spacing: 0.5px;
 }
 
+.hero-image {
+  flex: 1;
+  text-align: center;
+}
+
 .hero-image img {
   width: 100%;
   max-width: 500px;
@@ -67,17 +83,23 @@
   margin: 20px 80px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   border: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 60px 80px;
 }
 
 .founder-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .founder-image {
   position: relative;
   flex-shrink: 0;
+  text-align: center;
 }
 
 .founder-image img {
@@ -103,6 +125,11 @@
 
 .founder-badge i {
   margin-right: 8px;
+}
+
+.founder-info {
+  flex: 1;
+  text-align: left;
 }
 
 .founder-info h2 {
@@ -155,6 +182,7 @@
   margin: 20px 80px;
   border-radius: 20px;
   padding: 60px 80px;
+  text-align: center;
 }
 
 .mission-grid {
@@ -162,6 +190,9 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
   margin-top: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mission-card {
@@ -226,11 +257,15 @@
   padding: 60px 80px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   border: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
 }
 
 .services-header {
   text-align: center;
   margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .services-header h2 {
@@ -247,6 +282,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .service-item {
@@ -301,9 +338,13 @@
 
 .timeline {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 40px;
   margin-top: 50px;
   position: relative;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .timeline::before {
@@ -372,6 +413,11 @@
   text-align: center;
 }
 
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .cta-content h2 {
   color: #141313;
   margin-bottom: 20px;
@@ -423,12 +469,22 @@
   border-radius: 20px;
   margin: 20px 80px;
   border: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 60px 80px;
 }
 
 .contact-hero-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-hero-text {
+  flex: 1;
+  text-align: left;
 }
 
 .contact-hero-text h1 {
@@ -465,6 +521,11 @@
   width: 20px;
 }
 
+.contact-hero-image {
+  flex: 1;
+  text-align: center;
+}
+
 .contact-hero-image img {
   width: 100%;
   max-width: 500px;
@@ -487,6 +548,9 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   margin-top: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-method-card {
@@ -563,6 +627,8 @@
   display: flex;
   gap: 60px;
   align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .contact-subtitle {
@@ -570,6 +636,7 @@
   font-size: 1.1rem;
   margin: 15px 0 30px 0;
   line-height: 1.6;
+  text-align: center;
 }
 
 .contact-info-grid {
@@ -728,6 +795,8 @@
   display: flex;
   gap: 60px;
   align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .contact-form {
@@ -1152,6 +1221,17 @@
   color: white;
   line-height: 1.6;
   text-align: left;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  opacity: 0;
+  padding: 0 30px;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  opacity: 1;
+  padding: 0 30px 25px;
 }
 
 .faq-answer p {
@@ -1217,9 +1297,10 @@
     text-align: center;
   }
 
-  .hero-text h1,
-  .contact-hero-text h1 {
-    font-size: 2.5rem;
+  .hero-text,
+  .founder-info,
+  .contact-hero-text {
+    text-align: center;
   }
 
   .hero-stats {
