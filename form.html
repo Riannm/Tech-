@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech+ - Formulário de Contato</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+  <section id="header">
+    <a href="#"><img src="img/logo/logo.png" class="logo" alt=""></a>
+
+    <div>
+        <ul id="navbar">
+            <li><a href="index.html">Página Inicial</a></li>
+            <li><a href="shop.html">Compras</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a class="active" href="form.html">Formulário</a></li>
+            <li><a id="bag" href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg></i></a></li>
+              <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+    </div>
+
+    <div id="mobile">
+        <a href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart cart_mobile" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+          </svg></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+  </section>
+
+  <section id="page-header">
+    <h2>Formulário</h2>
+    <p>Preencha o formulário abaixo para entrar em contato conosco</p>
+  </section>
+
+  <section class="form-container">
+    <h2>Entre em Contato</h2>
+    <form action="#" method="POST">
+
+      <div class="form-group">
+        <label for="name">Nome completo:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contact-method">Como prefere ser contatado?</label>
+        <label><input type="radio" name="contact" value="email" checked> E-mail</label>
+        <label><input type="radio" name="contact" value="whatsapp"> WhatsApp</label>
+      </div>
+
+      <div class="form-group">
+        <label for="request-type">Tipo de solicitação:</label>
+        <select id="request-type" name="request-type" required>
+          <option value="">Selecione...</option>
+          <option value="duvida">Dúvida</option>
+          <option value="suporte">Suporte Técnico</option>
+          <option value="orcamento">Solicitar Orçamento</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="appointment">Deseja agendar uma visita?</label>
+        <input type="date" id="appointment" name="appointment">
+      </div>
+
+      <div class="form-group">
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Descreva o que você precisa..." required></textarea>
+      </div>
+
+      <button type="submit">Enviar Mensagem</button> 
+
+      <a href="index.html">
+        <button id="btn_voltar" type="button">Voltar a página principal</button>
+      </a>
+
+      
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Logo e descrição -->
+      <div class="footer-section">
+        <img class="logo" src="img/logo/logo.png">
+        <p class="footer-description">
+          Soluções digitais, serviços personalizados e suporte tecnológico para o seu dia a dia. Conecte-se com o futuro através da Tech+.
+        </p>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Navegação</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Início</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <ul class="footer-contact">
+          <li><strong>Email:</strong> rminformatica185@gmail.com</li>
+          <li><strong>Whatsapp:</strong>+55 33 9709-9695</li>
+          <li><strong>Local:</strong> Açucena - MG</li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Redes sociais</h3>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/rm.informaticaa/" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.instagram.com/rm.informaticaa/" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      © 2025 Tech+. Todos os direitos reservados.
+    </div>
+  </footer>
+  
+  <script src="index.js"></script>
+</body>
+</html>
